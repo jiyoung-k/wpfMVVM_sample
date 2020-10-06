@@ -20,7 +20,6 @@ namespace WPFMVVM
         }
     }
 
-
     public class CurrencyConverterViewModel:Notifier
     {
         public ICommand MyCommand { get; set; }
@@ -32,11 +31,13 @@ namespace WPFMVVM
 
         private void Execute(object obj)
         {
-            MessageBox.Show("use ICommand !!!");
+            string clickMSG = "use ICommand button ...... ";
+            if (selectedCurrency != null) clickMSG += selectedCurrency.Title;
+
+            MessageBox.Show(clickMSG);
         }
 
         private decimal euros;
-
         public decimal Euros
         {
             get { return euros; }
@@ -49,7 +50,6 @@ namespace WPFMVVM
         }
 
         private decimal converted;
-
         public decimal Converted
         {
             get { return converted; }
@@ -61,7 +61,6 @@ namespace WPFMVVM
         }
 
         private Currency selectedCurrency;
-
         public Currency SelectedCurrency
         {
             get { return selectedCurrency; }
@@ -74,7 +73,6 @@ namespace WPFMVVM
         }
 
         private IEnumerable<Currency> currencies;
-
         public IEnumerable<Currency> Currencies
         {
             get { return currencies; }
@@ -86,7 +84,6 @@ namespace WPFMVVM
         }
 
         private string resultText;
-
         public string ResultText
         {
             get { return resultText; }
@@ -98,7 +95,6 @@ namespace WPFMVVM
         }
 
         private string resultRate;
-
         public string ResultRate
         {
             get { return resultRate; }
@@ -109,10 +105,23 @@ namespace WPFMVVM
             }
         }
 
+        public ICommand TestCommand { get; set; }
+
+        private bool TestCanExecute(object arg)
+        {
+            return true;
+        }
+
+        private void TestExecute(object arg)
+        {
+            string test = "testCommand!!!!!!!";
+            MessageBox.Show(test);
+        }
 
         public CurrencyConverterViewModel()
         {
             MyCommand = new Command(Execute, CanExecute);
+            TestCommand = new Command(TestExecute, TestCanExecute);
 
             Currencies = new Currency[]
             {
@@ -142,9 +151,5 @@ namespace WPFMVVM
             ResultText = string.Format("Amount in {0}", selectedCurrency.Title);
             ResultRate = string.Format("Rate is {0}", selectedCurrency.Rate);
         }
-
-
-        
-
     }
 }

@@ -26,5 +26,6 @@
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="222,226,0,0" TextWrapping="Wrap" Text="{Binding ResultRate}" VerticalAlignment="Top" Height="39" Width="234" FontSize="24"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="351,287,0,0" VerticalAlignment="Top" Width="75" Command="{Binding MyCommand}"/>
+        <Button Content="Test" HorizontalAlignment="Left" Margin="351,350,0,0" VerticalAlignment="Top" Width="75" Command="{Binding TestCommand}"/>
     </Grid>
 </Page>
