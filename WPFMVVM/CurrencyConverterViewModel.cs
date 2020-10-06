@@ -22,21 +22,6 @@ namespace WPFMVVM
 
     public class CurrencyConverterViewModel:Notifier
     {
-        public ICommand MyCommand { get; set; }
-
-        private bool CanExecute(object arg)
-        {
-            return true;
-        }
-
-        private void Execute(object obj)
-        {
-            string clickMSG = "use ICommand button ...... ";
-            if (selectedCurrency != null) clickMSG += selectedCurrency.Title;
-
-            MessageBox.Show(clickMSG);
-        }
-
         private decimal euros;
         public decimal Euros
         {
@@ -103,6 +88,21 @@ namespace WPFMVVM
                 resultRate = value;
                 OnPropertyChanged("ResultRate");
             }
+        }
+
+        public ICommand MyCommand { get; set; }
+
+        private bool CanExecute(object arg)
+        {
+            return true;
+        }
+
+        private void Execute(object obj)
+        {
+            string clickMSG = "use ICommand button ...... ";
+            if (selectedCurrency != null) clickMSG += selectedCurrency.Title;
+
+            MessageBox.Show(clickMSG);
         }
 
         public ICommand TestCommand { get; set; }
