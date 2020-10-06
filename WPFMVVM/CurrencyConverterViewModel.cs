@@ -107,11 +107,6 @@ namespace WPFMVVM
 
         public ICommand TestCommand { get; set; }
 
-        private bool TestCanExecute(object arg)
-        {
-            return true;
-        }
-
         private void TestExecute(object arg)
         {
             string test = "testCommand!!!!!!!";
@@ -121,7 +116,7 @@ namespace WPFMVVM
         public CurrencyConverterViewModel()
         {
             MyCommand = new Command(Execute, CanExecute);
-            TestCommand = new Command(TestExecute, TestCanExecute);
+            TestCommand = new Command(TestExecute, CanExecute);
 
             Currencies = new Currency[]
             {
